@@ -31,7 +31,7 @@ fn calc(equation:String)->String
 fn parse(equation:String)->String
 {
 	let mut equ=equation;
-	let braces=Regex::new(r"\((?P<res>.*|[^()]*)\)").unwrap();
+	let braces=Regex::new(r"\((?P<res>([^()]*|(.*?\(.*?\))+.*?))\)").unwrap();
 	let dot=Regex::new(r"((\d*\.)?\d+)([*/]((\d*\.)?\d+))+").unwrap();
 	let line=Regex::new(r"((\d*\.)?\d+)([+-]((\d*\.)?\d+))+").unwrap();
 
@@ -52,9 +52,6 @@ fn main()
 	//		`ln`, `sin` and so on
 	//		This could also read from a configuration file, adding more
 	//		functions and user-defined functions
-	
-	//FIXME: IMPORTANT: BUG: the input `5*3*(4+1*5.123/3+3/5+(3*3)*(123-3))`
-	//						 does not work and yields `229.615)*(120`
 	println!("{}",parse(s));
 }
 

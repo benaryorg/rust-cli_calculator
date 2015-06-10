@@ -1,8 +1,8 @@
 # rust-cli\_calculator
 
 This is a small command line calculator taking command line arguments describing
-some math things, e.g. `5*3*(4+1*5.123/3+3/5+(3*3)*123-3)` returning the
-correct result e.g. `16654.615000000005`.
+some math things, e.g. `5*3*(4+1*5.123/3+3/5+(3*3)*(123-3))` returning the
+correct result e.g. `16294.615000000002`.
 
 # Building & Running
 
