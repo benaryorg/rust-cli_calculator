@@ -52,6 +52,9 @@ fn main()
 	//		`ln`, `sin` and so on
 	//		This could also read from a configuration file, adding more
 	//		functions and user-defined functions
+	
+	//FIXME: IMPORTANT: BUG: the input `5*3*(4+1*5.123/3+3/5+(3*3)*(123-3))`
+	//						 does not work and yields `229.615)*(120`
 	println!("{}",parse(s));
 }
 
