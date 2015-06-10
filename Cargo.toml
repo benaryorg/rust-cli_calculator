@@ -1,0 +1,8 @@
+[package]
+name = "calculator"
+version = "0.1.0"
+authors = ["benaryorg <binary@benary.org>"]
+
+[dependencies]
+regex = "*"
+
