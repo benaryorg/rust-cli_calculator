@@ -8,9 +8,9 @@ use regex::{Regex,Captures};
 /// `[+-]` or `[*/]` and may not contain braces.
 /// The result will be calculated by replacing the first arithmetic operator and
 /// the first two numbers with the result of this calculation.
-fn calc(equation:String)->String
+fn calc(equation:&str)->String
 {
-	let mut equ=equation;
+	let mut equ=equation.to_string();
 	let split=Regex::new(
 		r"(?P<n1>(\d*\.)?\d+)(?P<char>[-+*/])(?P<n2>(\d*\.)?\d+)").unwrap();
 
@@ -21,14 +21,14 @@ fn calc(equation:String)->String
 			let n1=cap.name("n1").unwrap().parse::<f64>().unwrap();
 			let n2=cap.name("n2").unwrap().parse::<f64>().unwrap();
 			//TODO: write back different for more accuracy
-			format!("{}",match cap.name("char").unwrap()
+			match cap.name("char").unwrap()
 			{
 				"+" => n1+n2,
 				"-" => n1-n2,
 				"*" => n1*n2,
 				"/" => n1/n2,
 				_ => unreachable!(),
-			})
+			}.to_string()
 		});
 	}
 	equ
@@ -54,9 +54,9 @@ fn parse(equation:String)->String
 	equ=braces.replace_all(equ.as_ref(),
 		|cap:&Captures|parse(cap.name("res").unwrap().to_string()));
 	equ=dot.replace_all(equ.as_ref(),
-		|cap:&Captures|calc(cap.at(0).unwrap().to_string()));
+		|cap:&Captures|calc(cap.at(0).unwrap()));
 	equ=line.replace_all(equ.as_ref(),
-		|cap:&Captures|calc(cap.at(0).unwrap().to_string()));
+		|cap:&Captures|calc(cap.at(0).unwrap()));
 	equ
 }
 
