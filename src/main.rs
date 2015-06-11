@@ -70,10 +70,6 @@ fn main()
 {
 	let args:Vec<String>=std::env::args().skip(1).collect();
 	let s=args.connect("").replace(" ","");
-	//TODO: maybe call a function called `solve` and handle function calls like
-	//		`ln`, `sin` and so on
-	//		This could also read from a configuration file, adding more
-	//		functions and user-defined functions
 	println!("{}",parse(s));
 }
 
