@@ -2,6 +2,12 @@ extern crate regex;
 
 use regex::{Regex,Captures};
 
+/// Calculates the result of the given calculation.
+///
+/// The calculation may only contain one type of arithmetic operations, either
+/// `[+-]` or `[*/]` and may not contain braces.
+/// The result will be calculated by replacing the first arithmetic operator and
+/// the first two numbers with the result of this calculation.
 fn calc(equation:String)->String
 {
 	let mut equ=equation;
@@ -28,6 +34,16 @@ fn calc(equation:String)->String
 	equ
 }
 
+/// Parses a calculation including the four basic arithmetic operations and
+/// braces.
+///
+/// This function is responsible for dealing with the order of the operations.
+/// It firstly recursively disassembles the passed string  based on the braces
+/// contained.
+/// These parts are being calculated and merged into the former string, which
+/// then will not contain braces anymore.
+/// Secondly it passes the multiplications and divisions to `calc` and lastly
+/// resolves additions and subtractions using, again, `calc`.
 fn parse(equation:String)->String
 {
 	let mut equ=equation;
@@ -44,6 +60,12 @@ fn parse(equation:String)->String
 	equ
 }
 
+/// Prepares the commandline arguments for usage with `parse` which then will be
+/// called.
+///
+/// The format of `parse`s argument is the following:
+///
+/// - no spaces
 fn main()
 {
 	let args:Vec<String>=std::env::args().skip(1).collect();
