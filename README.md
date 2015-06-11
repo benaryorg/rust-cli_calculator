@@ -11,7 +11,7 @@ correct result e.g. `16294.615000000002`.
 # Building & Running
 
     $ cargo build --release
-	$ cargo run --release
+	$ cargo run --release -- '<calculation>'
 
 You then have the binary.
 You know what to do with it, I'm sure.
