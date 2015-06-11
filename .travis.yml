@@ -7,6 +7,6 @@ notifications:
     email:
         recipients:
             - travisci@benary.org
-        on_success: always
+        on_success: change
         on_failure: always
 
