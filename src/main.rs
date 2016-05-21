@@ -69,7 +69,7 @@ fn parse(equation:String)->String
 fn main()
 {
 	let args:Vec<String>=std::env::args().skip(1).collect();
-	let s=args.connect("").replace(" ","");
+	let s=args.join("").replace(" ","");
 	println!("{}",parse(s));
 }
 
