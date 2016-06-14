@@ -4,5 +4,5 @@ version = "0.2.2"
 authors = ["benaryorg <binary@benary.org>"]
 
 [dependencies]
-regex = "*"
+regex = "~0.1.71"
 
